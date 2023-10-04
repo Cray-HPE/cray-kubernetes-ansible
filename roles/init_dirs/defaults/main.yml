@@ -1,0 +1,5 @@
+required_dirs:
+  - /etc/cray/kubernetes
+  - /etc/cray/kubernetes/flexvolume
+  - /opt/cray/tbd
+  - /var/run/sds
