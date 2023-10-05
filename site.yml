@@ -22,7 +22,7 @@
 # OTHER DEALINGS IN THE SOFTWARE.
 #
 ---
-- hosts: all
+- hosts: localhost
   gather_facts: no
   roles:
     - role: init_dirs
