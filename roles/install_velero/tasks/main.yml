@@ -39,9 +39,12 @@
     remote_src: yes
 
 - name: Copy Velero binary to /usr/bin
-  command: cp "{{ tmp_install_dir }}/velero-{{ VELERO_VERSION }}-linux-amd64" /usr/bin/velero
-  args:
-    creates: /usr/bin/velero
+  copy:
+    src: "{{ tmp_install_dir }}/velero-{{ VELERO_VERSION }}-linux-amd64/velero"
+    dest: /usr/bin/velero
+    owner: root
+    group: root
+    mode: '0750'
 
 - name: Remove temporary extraction directory
   file:
