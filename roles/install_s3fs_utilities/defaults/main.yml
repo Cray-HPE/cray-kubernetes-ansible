@@ -1,0 +1,3 @@
+s3fs_scripts:
+  - ensure-ceph-mounts.sh.j2
+  - prune-s3fs-cache.sh.j2
