@@ -1,0 +1,6 @@
+load-modules:
+  - 01-ipvs.conf
+  - 02-containerd.conf
+  - 99-ceph-rbd.conf
+modules:
+  - 99-ceph-rbd.conf
