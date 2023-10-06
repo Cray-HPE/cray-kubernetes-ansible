@@ -1,0 +1,4 @@
+ARTIFACTORY_STABLE: artifactory.algol60.net/csm-docker/stable
+
+images:
+  -  {{ ARTIFACTORY_STABLE }}/k8s.gcr.io/sig-storage/csi-attacher:v3.4.0
