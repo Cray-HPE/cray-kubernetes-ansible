@@ -4,3 +4,4 @@ required_dirs:
   - /opt/cray/tbd
   - /var/run/sds
   - /var/lib/kata
+  - /srv/cray/tmp

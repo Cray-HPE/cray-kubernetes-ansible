@@ -39,9 +39,10 @@
     remote_src: yes
 
 - name: Copy Velero binary to /usr/bin
-  copy:
+  file:
     src: "{{ tmp_install_dir }}/velero-{{ VELERO_VERSION }}-linux-amd64"
     dest: /usr/bin/velero
+    state: hard
     owner: root
     group: root
     mode: '0750'
