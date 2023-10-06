@@ -32,7 +32,7 @@
 
 - name: Download etcd tarfile
   unarchive:
-    src: http://bootserver/nexus/repository/fawkes-third-party/etcd-{{ ETC_VERSION }}-linux-amd64.tar.gz
+    src: http://bootserver/nexus/repository/fawkes-third-party/etcd-{{ ETCD_VERSION }}-linux-amd64.tar.gz
     dest: "{{ tmp_install_dir }}"
     owner: root
     group: root
