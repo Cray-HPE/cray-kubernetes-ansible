@@ -21,11 +21,7 @@
 # ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 # OTHER DEALINGS IN THE SOFTWARE.
 #
-# Tasks to install kubernetes packages
-#
-- name: Install kubernetes related rpms
-  package:
-    name: "{{ item }}"
-    state: present
-  with_items:
-    - "{{ k8s_packages }}"
+# Tasks for configuring swap
+- name: Ensuring swap is off
+  shell:
+    cmd: swapoff -a

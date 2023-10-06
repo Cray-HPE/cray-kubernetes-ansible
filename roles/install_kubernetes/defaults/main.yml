@@ -1,6 +1,6 @@
 KUBERNETES_PULL_VERSION: 1.22.13
 k8s_packages:
   - conntrack
-  - kubeadm
-  - kubectl
-  - kubelet
+  - kubeadm={{ KUBERNETES_PULL_VERSION }}-0
+  - kubectl={{ KUBERNETES_PULL_VERSION }}-0
+  - kubelet={{ KUBERNETES_PULL_VERSION }}-0
