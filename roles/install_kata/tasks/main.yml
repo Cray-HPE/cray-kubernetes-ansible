@@ -1,4 +1,4 @@
-#!/usr/bin/env ansible-playbook
+#
 # MIT License
 #
 # (C) Copyright 2023 Hewlett Packard Enterprise Development LP
@@ -21,9 +21,9 @@
 # ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 # OTHER DEALINGS IN THE SOFTWARE.
 #
----
-- hosts: localhost
-  gather_facts: no
-  roles:
-    - role: init_dirs
-    - role: install_kata
+# Tasks for installing kata
+- name: Download kata tar file
+  unarchive:
+    src: http://bootserver/nexus/repository/fawkes-third-party/kata-static-3.2.0-rc0-amd64.tar.xz
+    dest: /
+    remote_src: yes

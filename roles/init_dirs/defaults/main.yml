@@ -3,3 +3,4 @@ required_dirs:
   - /etc/cray/kubernetes/flexvolume
   - /opt/cray/tbd
   - /var/run/sds
+  - /var/lib/kata
