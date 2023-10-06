@@ -40,7 +40,8 @@
 
 - name: Copy Velero binary to /usr/bin
   command: cp "{{ tmp_install_dir }}/velero-{{ VELERO_VERSION }}-linux-amd64" /usr/bin/velero
-   creates: /usr/bin/velero
+  args:
+    creates: /usr/bin/velero
 
 - name: Remove temporary extraction directory
   file:
