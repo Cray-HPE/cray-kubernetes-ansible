@@ -25,7 +25,7 @@
 #
 - name: Download kata tar file
   unarchive:
-    src: http://bootserver/nexus/repository/fawkes-third-party/kata-static-"{{ KATA_VERSION }}"-amd64.tar.xz
+    src: http://bootserver/nexus/repository/fawkes-third-party/kata-static-{{ KATA_VERSION }}-amd64.tar.xz
     dest: /
     owner: root
     group: root
