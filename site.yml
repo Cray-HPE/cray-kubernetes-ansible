@@ -27,7 +27,7 @@
   roles:
 #    - role: setup_nexus
 #    - role: init_dirs
-#    - role: cray_profile
+    - role: cray_profile
 #    - role: install_kata
 #    - role: install_etcd
 #    - role: install_weave
