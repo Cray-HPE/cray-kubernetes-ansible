@@ -22,10 +22,27 @@
 # OTHER DEALINGS IN THE SOFTWARE.
 #
 # Tasks for installing kata
+#
 - name: Download kata tar file
   unarchive:
-    src: http://bootserver/nexus/repository/fawkes-third-party/kata-static-3.2.0-rc0-amd64.tar.xz
+    src: http://bootserver/nexus/repository/fawkes-third-party/kata-static-"{{ KATA_VERSION }}"-amd64.tar.xz
     dest: /
     owner: root
     group: root
     remote_src: yes
+
+- name: Create kata symlink
+  file:
+    src: /opt/kata/bin/containerd-shim-kata-v2
+    dest: /usr/local/bin/containerd-shim-kata-qemu-v2
+    owner: root
+    group: root
+    state: link
+
+- name: Add features to kata config
+  shell:
+    cmd: sed -i 's/\[\"enable_iommu\"\]/["enable_iommu", "virtio_fs_extra_args", "default_memory", "kernel_params", "cpu_features"]/' /opt/kata/share/defaults/kata-containers/configuration-qemu.toml
+
+- name: Change file backend for kata
+  shell:
+    cmd: sed -i 's/#file_mem_backend\s=\s\"\"/file_mem_backend = "\/var\/lib\/kata"/' /opt/kata/share/defaults/kata-containers/configuration-qemu.toml
