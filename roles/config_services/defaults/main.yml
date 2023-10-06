@@ -1,6 +1,6 @@
 enabled_services:
   - containerd
 
-disabled_services:
-  - spire
+disabled_services: {}
+#  - spire
 #  - kubelet TODO: uncomment after conntrack is avail

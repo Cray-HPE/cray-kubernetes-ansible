@@ -33,7 +33,7 @@
 #    - role: install_weave
 #    - role: install_cilium
 #    - role: install_velero
-#    - role: install_containerd
+    - role: install_containerd
 #    - role: config_podman
 #    - role: config_kubelet
 #    - role: config_modprobe
@@ -41,5 +41,5 @@
 #    - role: install_s3fs_utilities
 #    - role: install_kubernetes TODO: need conntrack in nexus
 #    - role: config_swap
-#    - role: config_services
-    - role: pull_images
+    - role: config_services
+#    - role: pull_images
