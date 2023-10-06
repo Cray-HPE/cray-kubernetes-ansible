@@ -1,2 +1,3 @@
 VELERO_VERSION: v1.6.3
 VELERO_NEW_VERSION: v1.7.2
+tmp_install_dir: /tmp/velero-tmp
