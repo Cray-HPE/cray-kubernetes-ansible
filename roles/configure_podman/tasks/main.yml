@@ -1,4 +1,4 @@
-#!/usr/bin/env ansible-playbook
+#
 # MIT License
 #
 # (C) Copyright 2023 Hewlett Packard Enterprise Development LP
@@ -11,8 +11,7 @@
 # Software is furnished to do so, subject to the following conditions:
 #
 # The above copyright notice and this permission notice shall be included
-# in all copies or substantial portions of the Software.
-#
+# in all copies or substantial portions of the Software.  #
 # THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 # IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 # FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
@@ -21,17 +20,11 @@
 # ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 # OTHER DEALINGS IN THE SOFTWARE.
 #
----
-- hosts: localhost
-  gather_facts: no
-  roles:
-#    - role: setup_nexus
-#    - role: init_dirs
-#    - role: cray_profile
-#    - role: install_kata
-#    - role: install_etcd
-#    - role: install_weave
-#    - role: install_cilium
-#    - role: install_velero
-    - role: configure_podman
-#    - role: install_containerd
+# Tasks for configuring podman
+- name: Configuring podman-cni secondary location
+  template:
+    src: containers.conf.j2
+    dest: /etc/containers/containers.conf
+    owner: root
+    group: root
+    mode: '0644'
