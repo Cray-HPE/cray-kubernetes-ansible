@@ -33,7 +33,7 @@
 
 - name: Installing modprobe.d configuration file(s).
   template:
-    src: "modprobe.d/{{ item }}.j2"
+    src: "templates/modprobe.d/{{ item }}.j2"
     dest: "/etc/modprobe.d/{{ item }}"
     owner: root
     group: root
