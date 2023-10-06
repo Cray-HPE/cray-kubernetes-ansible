@@ -25,7 +25,7 @@
 #
 - name: Install Cillium cli utility
   unarchive:
-    src: http://bootserver/nexus/repository/fawkes-third-party/cillium-linux-amd64.tar.xz
+    src: http://bootserver/nexus/repository/fawkes-third-party/cillium-linux-amd64.tar.gz
     dest: /usr/local/bin
     owner: root
     group: root
@@ -33,7 +33,7 @@
 
 - name: Install Hubble cli utility
   unarchive:
-    src: http://bootserver/nexus/repository/fawkes-third-party/hubble-linux-amd64.tar.xz
+    src: http://bootserver/nexus/repository/fawkes-third-party/hubble-linux-amd64.tar.gz
     dest: /usr/local/bin
     owner: root
     group: root
@@ -41,7 +41,7 @@
 
 - name: Install Tetra cli utility
   unarchive:
-    src: http://bootserver/nexus/repository/fawkes-third-party/tetra-linux-amd64.tar.xz
+    src: http://bootserver/nexus/repository/fawkes-third-party/tetra-linux-amd64.tar.gz
     dest: /usr/local/bin
     owner: root
     group: root
