@@ -1,0 +1,6 @@
+enabled_services:
+  - containerd
+
+disabled_services:
+  - kubelet
+  - spire

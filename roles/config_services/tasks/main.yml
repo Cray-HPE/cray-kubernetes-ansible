@@ -1,4 +1,4 @@
-#!/usr/bin/env ansible-playbook
+#
 # MIT License
 #
 # (C) Copyright 2023 Hewlett Packard Enterprise Development LP
@@ -21,24 +21,17 @@
 # ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 # OTHER DEALINGS IN THE SOFTWARE.
 #
----
-- hosts: localhost
-  gather_facts: no
-  roles:
-#    - role: setup_nexus
-#    - role: init_dirs
-#    - role: cray_profile
-#    - role: install_kata
-#    - role: install_etcd
-#    - role: install_weave
-#    - role: install_cilium
-#    - role: install_velero
-#    - role: install_containerd
-#    - role: config_podman
-#    - role: config_kubelet
-#    - role: config_modprobe
-#    - role: config_rsyslog
-#    - role: install_s3fs_utilities
-#    - role: install_kubernetes TODO: need conntrack in nexus
-#    - role: config_swap
-    - role: config_services
+# Tasks for enabling and disabling services
+- name: Enabling services
+  service:
+    name: "{{ item }}"
+    state: started
+  with_items:
+    - "{{ enabled_services }}"
+
+- name: Disabling services
+  service:
+    name: "{{ item }}"
+    state: started
+  with_items:
+    - "{{ disabled_services }}"
