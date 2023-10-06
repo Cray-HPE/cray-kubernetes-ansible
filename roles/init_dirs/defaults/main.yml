@@ -5,3 +5,4 @@ required_dirs:
   - /var/run/sds
   - /var/lib/kata
   - /srv/cray/tmp
+  - /etc/containerd
