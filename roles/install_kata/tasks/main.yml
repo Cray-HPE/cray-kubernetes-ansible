@@ -26,4 +26,6 @@
   unarchive:
     src: http://bootserver/nexus/repository/fawkes-third-party/kata-static-3.2.0-rc0-amd64.tar.xz
     dest: /
+    owner: root
+    group: root
     remote_src: yes
