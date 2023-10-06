@@ -39,7 +39,7 @@
     remote_src: yes
 
 - name: Copy binaries to /usr/bin
-  file:
+  copy:
     src: "{{ tmp_install_dir }}/etcd-{{ ETCD_VERSION }}-linux-amd64/{{ item }}"
     dest: /usr/bin
     owner: root
