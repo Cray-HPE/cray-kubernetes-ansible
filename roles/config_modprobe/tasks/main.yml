@@ -23,13 +23,13 @@
 # Tasks for configuring modprobe/modules-load
 - name: Installing module-load.d configuration file(s).
   template:
-    src: "modules-load.d/{{ item }}.j2"
+    src: "templates/modules-load.d/{{ item }}.j2"
     dest: "/etc/modules-load.d/{{ item }}"
     owner: root
     group: root
     mode: '0644'
   with_items:
-    - "{{ load-modules }}"
+    - "{{ loadmodules }}"
 
 - name: Installing modprobe.d configuration file(s).
   template:
