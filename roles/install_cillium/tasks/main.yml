@@ -1,4 +1,4 @@
-#!/usr/bin/env ansible-playbook
+#
 # MIT License
 #
 # (C) Copyright 2023 Hewlett Packard Enterprise Development LP
@@ -21,11 +21,28 @@
 # ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 # OTHER DEALINGS IN THE SOFTWARE.
 #
----
-- hosts: localhost
-  gather_facts: no
-  roles:
-    - role: init_dirs
-#    - role: install_kata
-#    - role: install_etcd
-    - role: install_cillium
+# Tasks for cillium
+#
+- name: Install Cillium cli utility
+  unarchive:
+    src: http://bootserver/nexus/repository/fawkes-third-party/cillium-linux-amd64.tar.xz
+    dest: /usr/local/bin
+    owner: root
+    group: root
+    remote_src: yes
+
+- name: Install Hubble cli utility
+  unarchive:
+    src: http://bootserver/nexus/repository/fawkes-third-party/hubble-linux-amd64.tar.xz
+    dest: /usr/local/bin
+    owner: root
+    group: root
+    remote_src: yes
+
+- name: Install Tetra cli utility
+  unarchive:
+    src: http://bootserver/nexus/repository/fawkes-third-party/tetra-linux-amd64.tar.xz
+    dest: /usr/local/bin
+    owner: root
+    group: root
+    remote_src: yes
