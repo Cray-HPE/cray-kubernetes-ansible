@@ -40,8 +40,8 @@
 
 - name: Copy Velero binary to /usr/bin
   copy:
-    src: "{{ tmp_install_dir }}/velero-{{ VELERO_VERSION }}"
-    dest: /usr/bin
+    src: "{{ tmp_install_dir }}/velero-{{ VELERO_VERSION }}-linux-amd64"
+    dest: /usr/bin/velero
     owner: root
     group: root
     mode: '0750'
