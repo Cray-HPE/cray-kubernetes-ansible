@@ -46,3 +46,8 @@
     group: root
   with_items:
     - "{{ etcd_binaries }}"
+
+- name: Remove temporary extraction directory
+  file:
+    path: "{{ tmp_install_dir }}"
+    state: absent

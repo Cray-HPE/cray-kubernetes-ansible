@@ -2,4 +2,4 @@ ETCD_VERSION: v3.5.0
 etcd_binaries:
   - etcd
   - etcdctl
-tmp_dir: /tmp/etcd-tmp
+tmp_install_dir: /tmp/etcd-tmp
