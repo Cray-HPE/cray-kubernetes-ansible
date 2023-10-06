@@ -1,0 +1,3 @@
+conffiles:
+  - ignore-kubelet-noise.conf
+  - ignore-systemd-session-slice.conf
