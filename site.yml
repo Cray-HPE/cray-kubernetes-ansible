@@ -27,3 +27,4 @@
   roles:
     - role: init_dirs
     - role: install_kata
+    - role: install_etcd
