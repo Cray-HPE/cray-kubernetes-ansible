@@ -6,3 +6,4 @@ required_dirs:
   - /var/lib/kata
   - /srv/cray/tmp
   - /etc/containerd
+  - /etc/containers
