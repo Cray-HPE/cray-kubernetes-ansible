@@ -40,7 +40,7 @@
 
 - name: Copy binaries to /usr/bin
   file:
-    src: {{ tmp_install_dir }}/etcd-{{ ETCD_VERSION }}-linux-amd64/{{ item }}
+    src: "{{ tmp_install_dir }}/etcd-{{ ETCD_VERSION }}-linux-amd64/{{ item }}"
     dest: /usr/bin
     owner: root
     group: root
