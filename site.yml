@@ -25,7 +25,8 @@
 - hosts: localhost
   gather_facts: no
   roles:
+#    - role: setup_nexus
     - role: init_dirs
 #    - role: install_kata
 #    - role: install_etcd
-    - role: install_cillium
+    - role: install_cilium
