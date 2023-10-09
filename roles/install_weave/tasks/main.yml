@@ -22,5 +22,10 @@
 # OTHER DEALINGS IN THE SOFTWARE.
 #
 # Tasks for weave
-#
-# TODO: where do we grab the weave binary, or find an rpm (or build one?)
+- name: Weave shell script
+  template:
+    src: weave.j2
+    dest: /usr/bin/weave
+    owner: root
+    group: root
+    mode: '0755'
