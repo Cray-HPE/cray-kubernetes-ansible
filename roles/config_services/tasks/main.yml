@@ -29,10 +29,9 @@
   with_items:
     - "{{ enabled_services }}"
 
-# TODO: uncomment when services are there to disable (spire..)
-#- name: Disabling services
-#  service:
-#    name: "{{ item }}"
-#    state: started
-#  with_items:
-#    - "{{ disabled_services }}"
+- name: Disabling services
+  service:
+    name: "{{ item }}"
+    state: started
+  with_items:
+    - "{{ disabled_services }}"
