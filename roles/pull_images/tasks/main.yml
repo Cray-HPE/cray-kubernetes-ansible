@@ -27,3 +27,7 @@
     cmd: "crictl pull {{ item }}"
   with_items:
     - "{{ images }}"
+
+- name: Re-tagging coredns image to former path for upgrade prior to kubeadm update
+  shell:
+    cmd: "/usr/local/bin/ctr -n k8s.io images tag {{ K8S_IMAGE_REGISTRY }}/coredns/coredns:{{ COREDNS_VERSION }} {{ K8S_IMAGE_REGISTRY }}/coredns:{{ COREDNS_VERSION }}"

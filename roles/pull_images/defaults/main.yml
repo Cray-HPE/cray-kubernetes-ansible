@@ -1,4 +1,5 @@
 ARTIFACTORY_STABLE: artifactory.algol60.net/csm-docker/stable
+COREDNS_VERSION: v1.8.4
 
 images:
   - "{{ ARTIFACTORY_STABLE }}/k8s.gcr.io/sig-storage/csi-attacher:v3.4.0"
@@ -21,7 +22,7 @@ images:
   - "{{ ARTIFACTORY_STABLE }}/docker.io/weaveworks/weave-kube:2.8.1"
   - "{{ ARTIFACTORY_STABLE }}/docker.io/weaveworks/weave-npc:2.8.1"
   - "{{ ARTIFACTORY_STABLE }}/ghcr.io/k8snetworkplumbingwg/multus-cni:v3.9.3"
-  - "{{ ARTIFACTORY_STABLE }}/k8s.gcr.io/coredns/coredns:v1.8.4"
+  - "{{ ARTIFACTORY_STABLE }}/k8s.gcr.io/coredns/coredns:{{ COREDNS_VERSION }}"
   - "{{ ARTIFACTORY_STABLE }}/k8s.gcr.io/kube-apiserver:v1.22.13"
   - "{{ ARTIFACTORY_STABLE }}/k8s.gcr.io/kube-controller-manager:v1.22.13"
   - "{{ ARTIFACTORY_STABLE }}/k8s.gcr.io/kube-proxy:v1.22.13"
