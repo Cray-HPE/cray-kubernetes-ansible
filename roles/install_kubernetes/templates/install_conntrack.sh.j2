@@ -1,0 +1,31 @@
+#!/bin/bash
+# Copyright 2022 Hewlett Packard Enterprise Development LP
+
+set -ex
+
+echo "Building a custom local repository for conntrack dependency, just a mocked version of the named zypper package"
+zypper -n install -y rpmbuild createrepo_c
+mkdir -p /tmp/conntrack
+
+cat > /tmp/conntrack/conntrack.spec <<EOF
+Name:     conntrack
+Summary:  Dummy conntrack rpm for ensuring requirements in other packages
+Version:  1
+Release:  1
+License:  none
+%description
+%prep
+%build
+%install
+%files
+EOF
+
+rpmbuild -ba --define "_rpmdir /tmp/conntrack" /tmp/conntrack/conntrack.spec
+mkdir -p /var/local-repos/conntrack/noarch
+rm /tmp/conntrack/conntrack.spec
+[[ ! -d /var/local-repos/conntrack/x86_64 ]] && mv /tmp/conntrack/* /var/local-repos/conntrack/
+createrepo /var/local-repos/conntrack
+[[ ! $(zypper lr | grep "local-conntrack") ]] && zypper -n addrepo --refresh --no-gpgcheck /var/local-repos/conntrack local-conntrack
+zypper -n remove -u -y rpmbuild createrepo_c
+
+zypper -n install --force -y conntrack-tools

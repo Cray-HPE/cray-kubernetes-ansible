@@ -23,6 +23,18 @@
 #
 # Tasks to install kubernetes packages
 #
+- name: Deploy conntrack repo work-around script
+  template:
+    src: install_conntrack.sh.j2
+    dest: /tmp/install_conntrack.sh
+    owner: root
+    group: root
+    mode: '0755'
+
+- name: Configure conntrack repo work-around
+  shell:
+    cmd: /tmp/install_conntrack.sh
+
 - name: Install kubernetes related rpms
   package:
     name: "{{ item }}"

@@ -39,7 +39,7 @@
     - role: config_modprobe
     - role: config_rsyslog
     - role: install_s3fs_utilities
-#    - role: install_kubernetes TODO: need conntrack in nexus
+    - role: install_kubernetes TODO: need conntrack in nexus
     - role: config_swap
     - role: config_services
     - role: pull_images
