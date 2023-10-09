@@ -1,5 +1,11 @@
 KUBERNETES_PULL_VERSION: 1.22.13
+
 k8s_packages:
+  - kubeadm
+  - kubectl
+  - kubelet
+
+k8s_versioned_packages:
   - kubeadm={{ KUBERNETES_PULL_VERSION }}-0
   - kubectl={{ KUBERNETES_PULL_VERSION }}-0
   - kubelet={{ KUBERNETES_PULL_VERSION }}-0

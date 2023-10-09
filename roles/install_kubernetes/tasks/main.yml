@@ -23,6 +23,11 @@
 #
 # Tasks to install kubernetes packages
 #
+- name: Purge any existing kubernetes related rpms
+  package:
+    name: "{{ k8s_packages }}"
+    state: absent
+
 - name: Deploy conntrack repo work-around script
   template:
     src: install_conntrack.sh.j2
@@ -37,5 +42,5 @@
 
 - name: Install kubernetes related rpms
   package:
-    name: "{{ k8s_packages }}"
+    name: "{{ k8s_versioned_packages }}"
     state: present
