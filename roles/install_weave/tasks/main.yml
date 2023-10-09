@@ -22,9 +22,9 @@
 # OTHER DEALINGS IN THE SOFTWARE.
 #
 # Tasks for weave
-- name: Weave shell script
-  template:
-    src: weave.j2
+- name: Install Weave Net cli utility
+  copy:
+    src: weave
     dest: /usr/bin/weave
     owner: root
     group: root
