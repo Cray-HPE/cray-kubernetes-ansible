@@ -37,7 +37,5 @@
 
 - name: Install kubernetes related rpms
   package:
-    name: "{{ item }}"
+    name: "{{ k8s_packages }}"
     state: present
-  with_items:
-    - "{{ k8s_packages }}"
