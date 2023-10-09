@@ -25,21 +25,21 @@
 - hosts: localhost
   gather_facts: no
   roles:
-#    - role: setup_nexus
-#    - role: init_dirs
-#    - role: cray_profile
-#    - role: install_kata
-#    - role: install_etcd
-##    - role: install_weave
-#    - role: install_cilium
-#    - role: install_velero
-#    - role: install_containerd
-#    - role: config_podman
-#    - role: config_kubelet
-#    - role: config_modprobe
-#    - role: config_rsyslog
-#    - role: install_s3fs_utilities
+    - role: setup_nexus
+    - role: init_dirs
+    - role: cray_profile
+    - role: install_kata
+    - role: install_etcd
+#    - role: install_weave
+    - role: install_cilium
+    - role: install_velero
+    - role: install_containerd
+    - role: config_podman
+    - role: config_kubelet
+    - role: config_modprobe
+    - role: config_rsyslog
+    - role: install_s3fs_utilities
     - role: install_kubernetes
-#    - role: config_swap
-#    - role: config_services
-#    - role: pull_images
+    - role: config_swap
+    - role: config_services
+    - role: pull_images
