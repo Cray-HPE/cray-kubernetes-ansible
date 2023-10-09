@@ -1,0 +1,61 @@
+cluster:
+  id: 0
+  name: kubernetes
+cni:
+  exclusive: false
+  customConf: true # Migration: Don't install a CNI configuration file
+  uninstall: false # Migration: Don't remove CNI configuration on shutdown
+encryption:
+  nodeEncryption: false
+kubeProxyReplacement: disabled
+hubble:
+  relay:
+    image:
+      override: ~
+      repository: "${QUAY_IMAGE_REGISTRY}/cilium/hubble-relay"
+      tag: $CILIUM_CNI_VERSION
+      useDigest: false 
+    enabled: true
+  ui:
+    enabled: true
+    backend:
+      # -- Hubble-ui backend image.
+      image:
+        repository: "${QUAY_IMAGE_REGISTRY}/cilium/hubble-ui-backend"
+        tag: $CILIUM_HUBBLE_VERSION 
+    frontend:
+      # -- Hubble-ui frontend image.
+      image:
+        repository: "${QUAY_IMAGE_REGISTRY}/cilium/hubble-ui"
+        tag: $CILIUM_HUBBLE_VERSION 
+image:
+  repository: "${QUAY_IMAGE_REGISTRY}/cilium/cilium"
+  tag: $CILIUM_CNI_VERSION
+  useDigest: false
+operator:
+  unmanagedPodWatcher:
+    restart: false # Migration: Don't restart unmigrated pods
+  replicas: $CILIUM_OPERATOR_REPLICAS
+  image:
+    repository: "${QUAY_IMAGE_REGISTRY}/cilium/operator"
+    tag: $CILIUM_CNI_VERSION
+    useDigest: false
+image:
+  repository: "${QUAY_IMAGE_REGISTRY}/cilium/cilium"
+  tag: $CILIUM_CNI_VERSION
+  useDigest: false
+serviceAccounts:
+  cilium:
+    name: cilium
+  operator:
+    name: cilium-operator
+tunnel: vxlan # Migration: Optional: default is vxlan, configure as needed
+tunnelPort: $CILIUM_MIGRATION_TUNNEL_PORT # Migration: Optional, change only if both networks use the same port by default
+ipam:
+  mode: "cluster-pool"
+  operator:
+    clusterPoolIPv4PodCIDRList:
+      - $CILIUM_MIGRATION_POD_CIDR 
+policyEnforcementMode: "never" # Migration: Disable policy enforcement
+bpf:
+  hostLegacyRouting: true # Migration: Allow for routing between Cilium and the existing overlay

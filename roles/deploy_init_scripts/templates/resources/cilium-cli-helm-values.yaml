@@ -1,0 +1,47 @@
+cluster:
+  id: 0
+  name: kubernetes
+cni:
+  exclusive: false
+encryption:
+  nodeEncryption: false
+kubeProxyReplacement: disabled
+hubble:
+  relay:
+    image:
+      override: ~
+      repository: "${QUAY_IMAGE_REGISTRY}/cilium/hubble-relay"
+      tag: $CILIUM_CNI_VERSION
+      useDigest: false
+    enabled: true
+  ui:
+    enabled: true
+    backend:
+      image:
+        repository: "${QUAY_IMAGE_REGISTRY}/cilium/hubble-ui-backend"
+        tag: $CILIUM_HUBBLE_VERSION
+    frontend:
+      image:
+        repository: "${QUAY_IMAGE_REGISTRY}/cilium/hubble-ui"
+        tag: $CILIUM_HUBBLE_VERSION
+operator:
+  replicas: $CILIUM_OPERATOR_REPLICAS
+  image:
+    repository: "${QUAY_IMAGE_REGISTRY}/cilium/operator"
+    tag: $CILIUM_CNI_VERSION
+    useDigest: false
+image:
+  repository: "${QUAY_IMAGE_REGISTRY}/cilium/cilium"
+  tag: $CILIUM_CNI_VERSION
+  useDigest: false
+serviceAccounts:
+  cilium:
+    name: cilium
+  operator:
+    name: cilium-operator
+tunnel: vxlan
+ipam:
+  operator:
+    clusterPoolIPv4PodCIDRList:
+      - $PODS_CIDR
+

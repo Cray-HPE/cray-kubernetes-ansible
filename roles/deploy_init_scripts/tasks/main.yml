@@ -1,4 +1,4 @@
-#!/usr/bin/env ansible-playbook
+#
 # MIT License
 #
 # (C) Copyright 2023 Hewlett Packard Enterprise Development LP
@@ -11,8 +11,7 @@
 # Software is furnished to do so, subject to the following conditions:
 #
 # The above copyright notice and this permission notice shall be included
-# in all copies or substantial portions of the Software.
-#
+# in all copies or substantial portions of the Software.  #
 # THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 # IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 # FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
@@ -21,27 +20,8 @@
 # ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 # OTHER DEALINGS IN THE SOFTWARE.
 #
----
-- hosts: localhost
-  gather_facts: no
-  roles:
-#    - role: setup_nexus
-#    - role: init_dirs
-#    - role: cray_profile
-#    - role: install_kata
-#    - role: install_etcd
-#    - role: install_weave
-#    - role: install_cilium
-#    - role: install_velero
-#    - role: install_containerd
-#    - role: config_podman
-#    - role: config_kubelet
-#    - role: config_modprobe
-#    - role: config_rsyslog
-#    - role: install_s3fs_utilities
-#    - role: install_kubernetes
-#    - role: config_swap
-#    - role: config_services
-#    - role: pull_images
-    - role: deploy_init_scripts
-#    - role: init_kubernetes
+# Tasks for deploying scripts and resources to bootstrap kubernetes
+- name: Synchronizating scripts and resources to bootstrap kubernetes
+  synchronize:
+    src: templates
+    dest: /srv/cray
