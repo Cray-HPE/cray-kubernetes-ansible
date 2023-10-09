@@ -25,7 +25,7 @@
 - hosts: localhost
   gather_facts: no
   roles:
-    - role: setup_nexus
+#    - role: setup_nexus
     - role: init_dirs
     - role: cray_profile
     - role: install_kata
