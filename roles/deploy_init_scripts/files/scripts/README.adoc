@@ -1,0 +1,4 @@
+= Workaround
+
+The `join-spire-on-storage.sh` symbolic link exists for CSM 1.2 to 1.3 upgrades.
+CSM 1.3 and newer will invoke the script from the correct location under `common/`.
