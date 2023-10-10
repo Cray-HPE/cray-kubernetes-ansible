@@ -21,18 +21,20 @@
 # OTHER DEALINGS IN THE SOFTWARE.
 #
 # Tasks for deploying scripts and resources to bootstrap kubernetes
-- name: Synchronizating scripts to bootstrap kubernetes
+- name: Synchronizating resources to bootstrap kubernetes
   synchronize:
-    src: roles/deploy_init_scripts/templates/scripts
-    dest: /srv/cray/scripts
+    src: roles/deploy_init_scripts/templates/resources
+    dest: /srv/cray/resources
     recursive: true
     dirs: true
     owner: true
     group: true
 
-#- name: Synchronizating resources to bootstrap kubernetes
+#- name: Synchronizating scripts to bootstrap kubernetes
 #  synchronize:
-#    src: templates/resources
-#    dest: /srv/cray/resources
+#    src: roles/deploy_init_scripts/templates/scripts
+#    dest: /srv/cray/scripts
 #    recursive: true
-
+#    dirs: true
+#    owner: true
+#    group: true
