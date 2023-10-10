@@ -23,9 +23,12 @@
 # Tasks for deploying scripts and resources to bootstrap kubernetes
 - name: Synchronizating scripts to bootstrap kubernetes
   synchronize:
-    src: templates
+    src: templates/scripts
     dest: /srv/cray/scripts
     recursive: true
+    template: yes
+    owner: root
+    group: root
 
 #- name: Synchronizating resources to bootstrap kubernetes
 #  synchronize:
