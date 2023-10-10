@@ -27,8 +27,8 @@
     dest: /srv/cray/scripts
     recursive: true
     dirs: true
-    owner: root
-    group: root
+    owner: "root"
+    group: "root"
 
 #- name: Synchronizating resources to bootstrap kubernetes
 #  synchronize:
