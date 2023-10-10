@@ -34,4 +34,4 @@
     dest: '/srv/cray/{{ item.path }}'
   with_filetree: '../templates'
   when:
-    - (item.state == 'file') and (not item.endswith('.json')) and (not item.endswith('.gotmpl'))
+    - (item.state == 'file') and (not item.path.endswith('.json')) and (not item.path.endswith('.gotmpl'))
