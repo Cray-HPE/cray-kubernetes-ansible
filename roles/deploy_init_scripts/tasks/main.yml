@@ -23,7 +23,7 @@
 # Tasks for deploying scripts and resources to bootstrap kubernetes
 - name: Synchronizating scripts to bootstrap kubernetes
   synchronize:
-    src: deploy_init_scripts/templates/scripts
+    src: roles/deploy_init_scripts/templates/scripts
     dest: /srv/cray/scripts
     recursive: true
     dirs: true
