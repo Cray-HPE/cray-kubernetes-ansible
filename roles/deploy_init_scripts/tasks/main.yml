@@ -26,7 +26,7 @@
     src: templates/scripts
     dest: /srv/cray/scripts
     recursive: true
-    template: yes
+    dirs: true
     owner: root
     group: root
 
