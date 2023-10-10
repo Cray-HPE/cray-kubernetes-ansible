@@ -33,4 +33,7 @@
     src: '{{ item.src }}'
     dest: '/srv/cray/{{ item.path }}'
   with_filetree: '../templates'
-  when: item.state == 'file'
+  when:
+    - item.state == 'file'
+    - not item.endswith(".json")
+    - not item.endswith(".gotmpl")
