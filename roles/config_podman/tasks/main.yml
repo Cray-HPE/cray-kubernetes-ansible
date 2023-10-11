@@ -22,8 +22,8 @@
 #
 # Tasks for configuring podman
 - name: Configuring podman-cni secondary location
-  template:
-    src: containers.conf.j2
+  copy:
+    src: /srv/cray/resources
     dest: /etc/containers/containers.conf
     owner: root
     group: root

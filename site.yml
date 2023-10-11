@@ -28,6 +28,7 @@
   roles:
 #    - role: setup_nexus
     - role: init_dirs
+    - role: deploy_init_scripts
     - role: cray_profile
     - role: install_kata
     - role: install_etcd
@@ -44,5 +45,4 @@
     - role: config_swap
     - role: config_services
     - role: pull_images
-    - role: deploy_init_scripts
     - role: init_kubernetes
