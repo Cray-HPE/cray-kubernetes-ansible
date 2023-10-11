@@ -31,7 +31,7 @@ while [ "$ip" == "" ]; do
   ip=$(dig +short $(hostname).nmn)
   echo "Waiting for resolution of $(hostname)"
   # TODO:
-  continue
+  break
   sleep 1
   if [ "$cnt" -eq 60 ]; then
     echo "ERROR: Giving up on DNS resolution..."
