@@ -40,5 +40,3 @@
   synchronize:
     src: files/
     dest: /srv/cray/
-    owner: root
-    group: root
