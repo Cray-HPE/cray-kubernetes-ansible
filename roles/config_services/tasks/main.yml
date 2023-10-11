@@ -22,6 +22,9 @@
 # OTHER DEALINGS IN THE SOFTWARE.
 #
 # Tasks for enabling and disabling services
+- name: Reload systemctl daemons
+  shell:
+    cmd: systemctl daemon-reload
 - name: Enabling services
   service:
     name: "{{ item }}"
