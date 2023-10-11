@@ -59,9 +59,9 @@ configure_auditing
 
 # These stop/starts may not be needed, they were added to ensure containerd and kubelet acknowledge
 # their overlayFS.
-systemctl stop containerd kubelet spire-agent
-systemctl enable containerd kubelet spire-agent
-systemctl start containerd kubelet spire-agent || echo "a daemon didn't start initially but may later"
+systemctl stop containerd kubelet # TODO: spire-agent
+systemctl enable containerd kubelet # TODO: spire-agent
+systemctl start containerd kubelet # TODO: spire-agent || echo "a daemon didn't start initially but may later"
 
 function mark-initialized() {
   echo "Marking this Kubernetes node as initialized"
@@ -417,9 +417,9 @@ function configure-external-etcd() {
   mkdir -p /etc/kubernetes/pki/etcd
 
   echo "Generating etcd configuration and services files"
-  envsubst < /srv/cray/resources/common/etcd/kubeadmcfg.yaml > /etc/kubernetes/kubeadmcfg.yaml
-  envsubst < /srv/cray/resources/common/etcd/etcd-node-ca-csr.json > /etc/kubernetes/etcd-node-ca-csr.json
-  envsubst < /srv/cray/resources/common/etcd/etcd.service > /etc/systemd/system/etcd.service
+  envsubst < /srv/cray/resources/etcd/kubeadmcfg.yaml > /etc/kubernetes/kubeadmcfg.yaml
+  envsubst < /srv/cray/resources/etcd/etcd-node-ca-csr.json > /etc/kubernetes/etcd-node-ca-csr.json
+  envsubst < /srv/cray/resources/etcd/etcd.service > /etc/systemd/system/etcd.service
 
   if [[ "$(hostname)" == $FIRST_MASTER_HOSTNAME ]] || [[ "$(hostname)" =~ ^$FIRST_MASTER_HOSTNAME-.* ]]; then
     echo "Generating the kubeadm certificate authority"
@@ -530,13 +530,13 @@ pre-configure-node
 
 echo "Setting up weave and multus containerd config files"
 mkdir -p /etc/cni/net.d/multus.d
-envsubst < /srv/cray/resources/common/containerd/10-weave.conflist > /etc/cni/net.d/10-weave.conflist
+envsubst < /srv/cray/resources/containerd/10-weave.conflist > /etc/cni/net.d/10-weave.conflist
 
 echo "Populating /etc/cni/net.d/00-multus.conf file"
 if [ "${K8S_CNI}" == "cilium" ]; then
-  export MULTUS_CONF=$(cat /srv/cray/resources/common/multus/multus-cilium.conf)
+  export MULTUS_CONF=$(cat /srv/cray/resources/multus/multus-cilium.conf)
 else
-  export MULTUS_CONF=$(cat /srv/cray/resources/common/multus/multus-weave.conf)
+  export MULTUS_CONF=$(cat /srv/cray/resources/multus/multus-weave.conf)
 fi
 
 echo "{
@@ -544,7 +544,7 @@ ${MULTUS_CONF}
 }" > /etc/cni/net.d/00-multus.conf
 
 echo "Ensuring our containerd config is in place and restarting containerd to pick up the changes"
-envsubst < /srv/cray/resources/${CRAYSYS_TYPE}/containerd/config.toml > /etc/containerd/config.toml
+envsubst < /srv/cray/resources/containerd/config.toml > /etc/containerd/config.toml
 systemctl restart containerd
 
 echo "Handling custom kubelet configuration"
