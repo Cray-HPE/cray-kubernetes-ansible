@@ -554,9 +554,10 @@ KUBELET_EXTRA_ARGS="${KUBELET_EXTRA_ARGS} --container-runtime=remote --runtime-r
 EOF
 
 echo "Waiting for ${CONTROL_PLANE_HOSTNAME} to be available..."
-while host $CONTROL_PLANE_HOSTNAME | grep 'NXDOMAIN' &>/dev/null; do
-  sleep 5
-done
+# TODO:
+#while host $CONTROL_PLANE_HOSTNAME | grep 'NXDOMAIN' &>/dev/null; do
+#  sleep 5
+#done
 
 if [[ "$(hostname)" == $FIRST_MASTER_HOSTNAME ]] || [[ "$(hostname)" =~ ^$FIRST_MASTER_HOSTNAME-.* ]]; then
   # TODO: export PODS_CIDR=$(craysys metadata get kubernetes-pods-cidr)
