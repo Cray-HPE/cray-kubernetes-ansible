@@ -2,7 +2,8 @@
 
 exit_code=0
 
-export CRAYSYS_TYPE=$(craysys type get)
+# TODO: export CRAYSYS_TYPE=$(craysys type get)
+export CRAYSYS_TYPE="metal"
 export KUBECONFIG=/etc/kubernetes/admin.conf
 
 function sync-kubernetes-config() {

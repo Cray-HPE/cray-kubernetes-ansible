@@ -1,9 +1,13 @@
 #!/bin/bash
 
 . /srv/cray/resources/common/vars.sh
-export PODS_CIDR=$(craysys metadata get kubernetes-pods-cidr)
-export WEAVE_MTU=$(craysys metadata get kubernetes-weave-mtu)
-export K8S_VIP=$(craysys metadata get k8s_virtual_ip)
+# TODO: export PODS_CIDR=$(craysys metadata get kubernetes-pods-cidr)
+export PODS_CIDR="10.32.0.0/12"
+# TODO: export WEAVE_MTU=$(craysys metadata get kubernetes-weave-mtu)
+export WEAVE_MTU="1376"
+# TODO: export K8S_VIP=$(craysys metadata get k8s_virtual_ip)
+export K8S_VIP="10.252.1.2"
+
 export CILIUM_OPERATOR_REPLICAS=$(craysys metadata get cilium-operator-replicas 2>/dev/null || echo "1")
 export K8S_CNI=$(craysys metadata get k8s-primary-cni 2>/dev/null || echo "weave")
 export CILIUM_KUBE_PROXY_REPLACEMENT=$(craysys metadata get cilium-kube-proxy-replacement 2>/dev/null || echo "disabled")

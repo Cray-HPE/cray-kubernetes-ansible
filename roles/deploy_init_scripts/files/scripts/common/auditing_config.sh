@@ -3,9 +3,11 @@
 # into place and restart the services, else will disable and stop the service
 # Will be disables by default in vshasta
 
-export CRAYSYS_TYPE=$(craysys type get)
+# TODO: export CRAYSYS_TYPE=$(craysys type get)
+export CRAYSYS_TYPE="metal"
 if [ $CRAYSYS_TYPE != "google" ]; then
-  export CRAYSYS_AUDITING=$(craysys metadata get ncn-mgmt-node-auditing-enabled)
+  # TODO: export CRAYSYS_AUDITING=$(craysys metadata get ncn-mgmt-node-auditing-enabled)
+  export CRAYSYS_AUDITING="false"
 fi
 
 function configure_auditing() {
