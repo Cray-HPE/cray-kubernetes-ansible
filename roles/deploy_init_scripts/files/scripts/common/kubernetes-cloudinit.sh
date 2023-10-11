@@ -27,7 +27,7 @@ set -e
 
 if [ -f /root/zero.file ]; then rm /root/zero.file; fi
 
-. /srv/cray/resources/common/vars.sh
+. /srv/cray/resources/vars.sh
 export KUBECONFIG=/etc/kubernetes/admin.conf
 export CRAYSYS_TYPE=$(craysys type get)
 export DOMAIN=$(craysys metadata get domain)
