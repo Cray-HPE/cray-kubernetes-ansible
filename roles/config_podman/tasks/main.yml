@@ -23,7 +23,7 @@
 # Tasks for configuring podman
 - name: Configuring podman-cni secondary location
   copy:
-    src: /srv/cray/resources
+    src: /srv/cray/resources/containers.conf
     dest: /etc/containers/containers.conf
     owner: root
     group: root
