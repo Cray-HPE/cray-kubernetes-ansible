@@ -22,7 +22,7 @@
 # OTHER DEALINGS IN THE SOFTWARE.
 #
 ---
-- hosts: localhost
+- hosts: all
   gather_facts: yes
   roles:
 #    - role: setup_nexus
