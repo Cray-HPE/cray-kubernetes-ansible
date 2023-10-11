@@ -37,7 +37,7 @@
     - item.state == 'file'
 
 - name: Syncronizing static files
-  copy:
+  synchronize:
     src: files/
     dest: /srv/cray/
     owner: root
