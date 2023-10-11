@@ -29,15 +29,20 @@ if [ -f /root/zero.file ]; then rm /root/zero.file; fi
 
 . /srv/cray/resources/vars.sh
 export KUBECONFIG=/etc/kubernetes/admin.conf
-export CRAYSYS_TYPE=$(craysys type get)
-export DOMAIN=$(craysys metadata get domain)
+# TODO: export CRAYSYS_TYPE=$(craysys type get)
+export CRAYSYS_TYPE="metal"
+# TODO: export DOMAIN=$(craysys metadata get domain)
+export DOMAIN="nmn mtl hmn"
 . /srv/cray/scripts/${CRAYSYS_TYPE}/lib.sh
 export KUBERNETES_VERSION="v$(cat /etc/cray/kubernetes/version)"
 export ETCD_INITIAL_CLUSTER_STRING=$(get-etcd-initial-cluster-members)
 export BACKUP_ENDPOINTS_FOR_ETCD=$(get-etcdctl-backup-endpoints)
-export K8S_CNI=$(craysys metadata get k8s-primary-cni)
-export SYSTEM_NAME=$(craysys metadata get system-name)
-export SITE_DOMAIN=$(craysys metadata get site-domain)
+#TODO: export K8S_CNI=$(craysys metadata get k8s-primary-cni)
+export K8S_CNI="weave"
+# TODO: export SYSTEM_NAME=$(craysys metadata get system-name)
+export SYSTEM_NAME="k8s-vm-worker"
+# TODO: export SITE_DOMAIN=$(craysys metadata get site-domain)
+export SITE_DOMAIN="hpc.amslabs.hpecorp.net"
 initialized_file="/etc/cray/kubernetes/initialized"
 
 # Script constants to reduce copypasta
@@ -345,7 +350,8 @@ function reconfigure-kube-scheduler() {
 
 function reconfigure-kube-api-server() {
   echo "In reconfigure-kube-api-server()"
-  local audit_logging_enabled=$(craysys metadata get k8s-api-auditing-enabled)
+  # TODO: local audit_logging_enabled=$(craysys metadata get k8s-api-auditing-enabled)
+  local audit_logging_enabled="false"
   echo "Audit logging enabled: $audit_logging_enabled"
 
   if [[ "$audit_logging_enabled" == "true" ]]; then
@@ -553,10 +559,14 @@ while host $CONTROL_PLANE_HOSTNAME | grep 'NXDOMAIN' &>/dev/null; do
 done
 
 if [[ "$(hostname)" == $FIRST_MASTER_HOSTNAME ]] || [[ "$(hostname)" =~ ^$FIRST_MASTER_HOSTNAME-.* ]]; then
-  export PODS_CIDR=$(craysys metadata get kubernetes-pods-cidr)
-  export SERVICES_CIDR=$(craysys metadata get kubernetes-services-cidr)
-  export MAX_PODS_PER_NODE=$(craysys metadata get kubernetes-max-pods-per-node)
-  export WEAVE_MTU=$(craysys metadata get kubernetes-weave-mtu)
+  # TODO: export PODS_CIDR=$(craysys metadata get kubernetes-pods-cidr)
+  export PODS_CIDR="10.32.0.0/12"
+  # TODO: export SERVICES_CIDR=$(craysys metadata get kubernetes-services-cidr)
+  export SERVICES_CIDR="10.16.0.0/12"
+  # TODO: export MAX_PODS_PER_NODE=$(craysys metadata get kubernetes-max-pods-per-node)
+  export MAX_PODS_PER_NODE="200"
+  # TODO: export WEAVE_MTU=$(craysys metadata get kubernetes-weave-mtu)
+  export WEAVE_MTU="1376"
   configure-external-etcd
   kubeadm certs certificate-key > /etc/cray/kubernetes/certificate-key
   chmod 0600 /etc/cray/kubernetes/certificate-key
@@ -600,7 +610,8 @@ if [[ "$(hostname)" == $FIRST_MASTER_HOSTNAME ]] || [[ "$(hostname)" =~ ^$FIRST_
 
   if [ "${K8S_CNI}" != "cilium" ]; then
     # Wait for a quorum of nodes to join before applying the network manifests
-    exp_node_count=$(craysys metadata get host-records | jq '.[] | .aliases | .[]' | grep "ncn-[mw].*nmn" | wc -l)
+    # TODO: exp_node_count=$(craysys metadata get host-records | jq '.[] | .aliases | .[]' | grep "ncn-[mw].*nmn" | wc -l)
+    exp_node_count="2"
 
     if [ $exp_node_count -le 0 ]; then
       echo "ERROR: Failed to find expected number of nodes"
