@@ -23,7 +23,7 @@
 #
 ---
 - hosts: localhost
-  gather_facts: no
+  gather_facts: yes
   roles:
 #    - role: setup_nexus
     - role: init_dirs
