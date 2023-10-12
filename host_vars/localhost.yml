@@ -12,6 +12,8 @@ PAUSE_VERSION: 3.5
 KATA_VERSION: 3.2.0-rc0
 VELERO_VERSION: v1.6.3
 VELERO_NEW_VERSION: v1.7.2
+WEAVE_MTU: 1376
+WEAVE_VERSION: 2.8.1
 PODS_CIDR: 10.32.0.0/12
 DOCKER_IMAGE_REGISTRY: artifactory.algol60.net/csm-docker/stable/docker.io
 QUAY_IMAGE_REGISTRY: artifactory.algol60.net/csm-docker/stable/quay.io
