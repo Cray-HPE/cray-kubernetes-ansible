@@ -174,12 +174,12 @@ items:
                       apiVersion: v1
                       fieldPath: spec.nodeName
                 - name: IPALLOC_RANGE
-                  value: '${PODS_CIDR}'
+                  value: '{{ PODS_CIDR }}'
                 - name: WEAVE_MTU
-                  value: '${WEAVE_MTU}'
+                  value: '{{ WEAVE_MTU ]}'
                 - name: INIT_CONTAINER
                   value: 'true'
-              image: "${DOCKER_IMAGE_REGISTRY}/weaveworks/weave-kube:${WEAVE_VERSION}"
+              image: "{{ DOCKER_IMAGE_REGISTRY }}/weaveworks/weave-kube:{{ WEAVE_VERSION }}"
               readinessProbe:
                 httpGet:
                   host: 127.0.0.1
@@ -208,7 +208,7 @@ items:
                     fieldRef:
                       apiVersion: v1
                       fieldPath: spec.nodeName
-              image: "${DOCKER_IMAGE_REGISTRY}/weaveworks/weave-npc:${WEAVE_VERSION}"
+              image: "{{ DOCKER_IMAGE_REGISTRY }}/weaveworks/weave-npc:{{ WEAVE_VERSION }}"
               resources:
                 requests:
                   cpu: 50m
@@ -224,7 +224,7 @@ items:
             - name: weave-init
               command:
                 - /home/weave/init.sh
-              image: "${DOCKER_IMAGE_REGISTRY}/weaveworks/weave-kube:${WEAVE_VERSION}"
+              image: "{{ DOCKER_IMAGE_REGISTRY }}/weaveworks/weave-kube:{{ WEAVE_VERSION }}"
               securityContext:
                 privileged: true
               volumeMounts:
@@ -455,10 +455,10 @@ items:
           - name: IPALLOC_RANGE
             value: '${PODS_CIDR}'
           - name: WEAVE_MTU
-            value: '${WEAVE_MTU}'
+            value: '{{ WEAVE_MTU }}'
           - name: INIT_CONTAINER
             value: 'true'
-          image: "${DOCKER_IMAGE_REGISTRY}/weaveworks/weave-kube:${WEAVE_VERSION}"
+          image: "{{ DOCKER_IMAGE_REGISTRY }}/weaveworks/weave-kube:{{ WEAVE_VERSION }}"
           readinessProbe:
             httpGet:
               host: 127.0.0.1
@@ -487,7 +487,7 @@ items:
               fieldRef:
                 apiVersion: v1
                 fieldPath: spec.nodeName
-          image: "${DOCKER_IMAGE_REGISTRY}/weaveworks/weave-npc:${WEAVE_VERSION}"
+          image: "{{ DOCKER_IMAGE_REGISTRY }}/weaveworks/weave-npc:{{ WEAVE_VERSION }}"
           resources:
             requests:
               cpu: 50m
@@ -509,7 +509,7 @@ items:
         - name: weave-init
           command:
           - /home/weave/init.sh
-          image: "${DOCKER_IMAGE_REGISTRY}/weaveworks/weave-kube:${WEAVE_VERSION}"
+          image: "{{ DOCKER_IMAGE_REGISTRY }}/weaveworks/weave-kube:{{ WEAVE_VERSION }}"
           securityContext:
             privileged: true
           volumeMounts:
