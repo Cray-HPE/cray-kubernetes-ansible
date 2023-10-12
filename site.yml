@@ -26,7 +26,7 @@
   connection: local
   gather_facts: yes
   roles:
-    - role: setup_nexus
+#    - role: setup_nexus
     - role: init_dirs
     - role: deploy_init_scripts
     - role: cray_profile
