@@ -26,23 +26,23 @@
   connection: local
   gather_facts: yes
   roles:
-#    - role: setup_nexus
-#    - role: init_dirs
-#    - role: deploy_init_scripts
-#    - role: cray_profile
-#    - role: install_kata
-#    - role: install_etcd
+    - role: setup_nexus
+    - role: init_dirs
+    - role: deploy_init_scripts
+    - role: cray_profile
+    - role: install_kata
+    - role: install_etcd
     - role: install_weave
-#    - role: install_cilium
-#    - role: install_velero
-#    - role: install_containerd
-#    - role: config_podman
-#    - role: config_kubelet
-#    - role: config_modprobe
-#    - role: config_rsyslog
-#    - role: install_s3fs_utilities
-#    - role: install_kubernetes
-#    - role: config_swap
-#    - role: config_services
-#    - role: pull_images
+    - role: install_cilium
+    - role: install_velero
+    - role: install_containerd
+    - role: config_podman
+    - role: config_kubelet
+    - role: config_modprobe
+    - role: config_rsyslog
+    - role: install_s3fs_utilities
+    - role: install_kubernetes
+    - role: config_swap
+    - role: config_services
+    - role: pull_images
 #    - role: init_kubernetes
