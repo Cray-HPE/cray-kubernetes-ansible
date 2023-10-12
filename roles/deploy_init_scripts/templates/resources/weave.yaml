@@ -176,7 +176,7 @@ items:
                 - name: IPALLOC_RANGE
                   value: '{{ PODS_CIDR }}'
                 - name: WEAVE_MTU
-                  value: '{{ WEAVE_MTU ]}'
+                  value: '{{ WEAVE_MTU }}'
                 - name: INIT_CONTAINER
                   value: 'true'
               image: "{{ DOCKER_IMAGE_REGISTRY }}/weaveworks/weave-kube:{{ WEAVE_VERSION }}"
